@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }) {
   const [showModal, setShowModal] = useState(false);
   const [dateSelected, setDateSelected] = useState(dayjs());
   const [schedule, setSchedule] = useState([])
+  const [selectedSchedule, setSelectedSchedule] = useState({})
 
   function initSchedule() {
     const storageSchedule = localStorage.getItem("savedSchedule");
@@ -36,7 +37,9 @@ function MyApp({ Component, pageProps }) {
         dateSelected,
         setDateSelected,
         schedule,
-        setSchedule
+        setSchedule,
+        selectedSchedule,
+        setSelectedSchedule
       }}
     >
       <Component {...pageProps} />

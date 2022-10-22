@@ -1,22 +1,29 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AppContext from '../AppContext';
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import dayjs from 'dayjs';
 import styles from '../styles/Modal.module.css'
 
 function ScheduleModal() {
-  const { setShowModal, dateSelected, setDateSelected, schedule, setSchedule } = useContext(AppContext);
+  const { setShowModal, dateSelected, setDateSelected, schedule, setSchedule, selectedSchedule, setSelectedSchedule } = useContext(AppContext);
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
 
   function handleSubmit() {
+    if (Object.entries(selectedSchedule).length !== 0) {
+      const schedulesIndex = schedule.findIndex(s => s.id === selectedSchedule.id)
+      schedule.splice(schedulesIndex, 1)
+    }
+
     localStorage.setItem("savedSchedule", JSON.stringify([...schedule, {
+      'id': dayjs().unix(),
       'title': title,
       'date': dateSelected.format('YYYY-MM-DD'),
       'desc': description
     }]))
 
     setSchedule([...schedule, {
+      'id': dayjs().unix(),
       'title': title,
       'date': dateSelected.format('YYYY-MM-DD'),
       'desc': description
@@ -25,7 +32,15 @@ function ScheduleModal() {
     setTitle("")
     setDescription("")
     setShowModal(false)
+    setSelectedSchedule({})
   }
+
+  useEffect(() => {
+    if (Object.entries(selectedSchedule).length !== 0) {
+      setTitle(selectedSchedule.title)
+      setDescription(selectedSchedule.desc)
+    }
+  }, [selectedSchedule, selectedSchedule.desc, selectedSchedule.title])
 
   return (
     <div className={styles.overlay}>
@@ -38,7 +53,8 @@ function ScheduleModal() {
             <button onClick={() => {
               setDateSelected(dayjs())
               setShowModal(false)
-              }}>
+              setSelectedSchedule({})
+            }}>
               <XMarkIcon className='w-6 text-gray-700' />
             </button>
           </div>

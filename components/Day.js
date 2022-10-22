@@ -4,7 +4,7 @@ import AppContext from '../AppContext';
 import { TrashIcon } from '@heroicons/react/24/solid'
 
 function Day({ day, rowIindex, title}) {
-  const { setDateSelected, setShowModal, setSchedule, schedule } = useContext(AppContext);
+  const { setDateSelected, setShowModal, schedule, setSelectedSchedule } = useContext(AppContext);
 
   function getTodayClass() {
     return day.format('DD-MM-YY') === dayjs().format('DD-MM-YY') ? 'bg-yellow-100 text-yellow-600' : ''
@@ -14,13 +14,9 @@ function Day({ day, rowIindex, title}) {
     return title === "" ? '' : 'bg-red-100 text-red-600 text-center'
   }
 
-  function scheduleRemove(index) {
-    if(confirm("Are you sure want to remove this schedule ?")) {
-      schedule.splice(index, 1)
-    }
-
-    localStorage.setItem("savedSchedule", JSON.stringify(schedule))
-    setSchedule(schedule)
+  function viewDetail(index) {
+    setSelectedSchedule(schedule[index])
+    setShowModal(true)
   }
 
   return (
@@ -41,7 +37,7 @@ function Day({ day, rowIindex, title}) {
             const schedulesIndex = schedule.findIndex(s => s.date === day.format('YYYY-MM-DD'))
             if(schedulesIndex !== -1 && s.date === day.format('YYYY-MM-DD')) {
               return (
-                <div className='badge' key={i}>
+                <div className='badge' key={i} onClick={() => viewDetail(schedulesIndex)}>
                   <p>{s.title}</p>
                   <TrashIcon className='w-4' onClick={() => scheduleRemove(schedulesIndex)} />
                 </div>
