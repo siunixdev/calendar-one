@@ -17,6 +17,7 @@ function Day({ day, rowIindex, title }) {
     const index = schedule.findIndex(s => s.id === id)
     setSelectedSchedule(schedule[index])
     setShowModal(true)
+    setDateSelected(dayjs(schedule[index].date))
   }
 
   return (
