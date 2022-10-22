@@ -100,7 +100,7 @@ function ScheduleModal() {
           </div>
         </div>
         <footer className={styles.modalFooter}>
-          <button onClick={handleRemove}>
+          <button onClick={handleRemove} className="button-danger">
             Delete
           </button>
           <button

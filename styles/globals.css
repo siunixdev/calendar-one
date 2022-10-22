@@ -10,6 +10,10 @@
   @apply text-yellow-600 hover:bg-yellow-100 bg-white py-2 px-4 rounded-md transition-all delay-100
 }
 
+.button-danger {
+  @apply text-red-400 text-sm
+}
+
 .button-social {
   @apply flex items-center justify-center p-2 rounded-full border-2 border-gray-300 hover:bg-slate-100
 }
