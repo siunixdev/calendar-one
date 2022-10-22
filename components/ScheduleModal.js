@@ -35,6 +35,23 @@ function ScheduleModal() {
     setSelectedSchedule({})
   }
 
+  function handleRemove() {
+    if(confirm("Are you sure want to delete this schedule ?")) {
+      if (Object.entries(selectedSchedule).length !== 0) {
+        const schedulesIndex = schedule.findIndex(s => s.id === selectedSchedule.id)
+        schedule.splice(schedulesIndex, 1)
+
+        setSchedule(schedule)
+        localStorage.setItem("savedSchedule", JSON.stringify(schedule))
+      }
+
+      setTitle("")
+      setDescription("")
+      setShowModal(false)
+      setSelectedSchedule({})
+    }
+  }
+
   useEffect(() => {
     if (Object.entries(selectedSchedule).length !== 0) {
       setTitle(selectedSchedule.title)
@@ -83,6 +100,9 @@ function ScheduleModal() {
           </div>
         </div>
         <footer className={styles.modalFooter}>
+          <button onClick={handleRemove}>
+            Delete
+          </button>
           <button
             className="button-primary"
             onClick={handleSubmit}

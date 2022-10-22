@@ -1,9 +1,8 @@
 import dayjs from 'dayjs'
 import { useContext } from 'react';
 import AppContext from '../AppContext';
-import { TrashIcon } from '@heroicons/react/24/solid'
 
-function Day({ day, rowIindex, title}) {
+function Day({ day, rowIindex, title }) {
   const { setDateSelected, setShowModal, schedule, setSelectedSchedule } = useContext(AppContext);
 
   function getTodayClass() {
@@ -31,15 +30,20 @@ function Day({ day, rowIindex, title}) {
         <p className='days-date'>{day.format('DD')}</p>
       </header>
       <main className='mt-4 relative w-full px-2'>
-        {title}
+        {
+          title && (
+            <div className='badge badge-danger'>
+              {title}
+            </div>
+          )
+        }
         {
           schedule && schedule.map((s, i) => {
             const schedulesIndex = schedule.findIndex(s => s.date === day.format('YYYY-MM-DD'))
-            if(schedulesIndex !== -1 && s.date === day.format('YYYY-MM-DD')) {
+            if (schedulesIndex !== -1 && s.date === day.format('YYYY-MM-DD')) {
               return (
-                <div className='badge' key={i} onClick={() => viewDetail(schedulesIndex)}>
+                <div className='badge badge-primary' key={i} onClick={() => viewDetail(schedulesIndex)}>
                   <p>{s.title}</p>
-                  <TrashIcon className='w-4' onClick={() => scheduleRemove(schedulesIndex)} />
                 </div>
               )
             }
