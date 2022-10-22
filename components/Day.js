@@ -16,7 +16,7 @@ function Day({ day, rowIindex, title }) {
         {rowIindex === 0 && (
           <p className='days-title'>{day.format('ddd').toUpperCase()}</p>
         )}
-        <p className='text-sm text-center'>{day.format('DD')}</p>
+        <p className='days-date'>{day.format('DD')}</p>
       </header>
       <main className='mt-4'>
         {title}

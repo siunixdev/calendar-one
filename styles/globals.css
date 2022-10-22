@@ -25,3 +25,7 @@
 .days-title {
   @apply text-sm mt-1 text-center text-yellow-600 font-bold
 }
+
+.days-date {
+  @apply text-sm text-center
+}
