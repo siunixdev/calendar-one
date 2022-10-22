@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import styles from '../styles/Modal.module.css'
 
 function ScheduleModal() {
-  const { setShowModal, dateSelected, setDateSelected, schedule } = useContext(AppContext);
+  const { setShowModal, dateSelected, setDateSelected, schedule, setSchedule } = useContext(AppContext);
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
 
@@ -15,11 +15,21 @@ function ScheduleModal() {
       'date': dateSelected.format('YYYY-MM-DD'),
       'desc': description
     }]))
+
+    setSchedule([...schedule, {
+      'title': title,
+      'date': dateSelected.format('YYYY-MM-DD'),
+      'desc': description
+    }])
+
+    setTitle("")
+    setDescription("")
+    setShowModal(false)
   }
 
   return (
     <div className={styles.overlay}>
-      <form className={styles.modal}>
+      <div className={styles.modal}>
         <header className={styles.modalHeader}>
           <span className={styles.headerTitle}>
             Schedule
@@ -64,7 +74,7 @@ function ScheduleModal() {
             Save
           </button>
         </footer>
-      </form>
+      </div>
     </div>
   )
 }

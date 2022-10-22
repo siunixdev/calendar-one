@@ -1,9 +1,6 @@
-import { useContext } from 'react';
-import AppContext from '../AppContext';
 import Day from './Day'
 
 function Month({ month, data }) {
-  const { schedule } = useContext(AppContext);
 
   return (
     <>
@@ -20,7 +17,7 @@ function Month({ month, data }) {
               }
 
               return (
-                <Day day={day} key={idx} rowIindex={i} title={title} schedule={schedule} />
+                <Day day={day} key={idx} rowIindex={i} title={title} />
               )
             })
           })
