@@ -13,7 +13,8 @@ function Day({ day, rowIindex, title }) {
     return title === "" ? '' : 'bg-red-100 text-red-600 text-center'
   }
 
-  function viewDetail(index) {
+  function viewDetail(id) {
+    const index = schedule.findIndex(s => s.id === id)
     setSelectedSchedule(schedule[index])
     setShowModal(true)
   }
@@ -42,7 +43,7 @@ function Day({ day, rowIindex, title }) {
             const schedulesIndex = schedule.findIndex(s => s.date === day.format('YYYY-MM-DD'))
             if (schedulesIndex !== -1 && s.date === day.format('YYYY-MM-DD')) {
               return (
-                <div className='badge badge-primary' key={i} onClick={() => viewDetail(schedulesIndex)}>
+                <div className='badge badge-primary' key={i} onClick={() => viewDetail(s.id)}>
                   <p>{s.title}</p>
                 </div>
               )
