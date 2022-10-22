@@ -24,9 +24,11 @@ function Day({ day, rowIindex, title }) {
       setDateSelected(day)
       setShowModal(true)
     }}>
-      <header>
+      <header className='w-full'>
         {rowIindex === 0 && (
-          <p className='days-title'>{day.format('ddd').toUpperCase()}</p>
+          <div className='min-w-full py-1 bg-slate-200'>
+            <p className='days-title'>{day.format('dddd')}</p>
+          </div>
         )}
         <p className='days-date'>{day.format('DD')}</p>
       </header>

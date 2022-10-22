@@ -23,15 +23,15 @@
 }
 
 .days {
-  @apply flex flex-col items-center pt-2 border border-slate-200
+  @apply flex flex-col items-center border border-slate-200
 }
 
 .days-title {
-  @apply text-sm mt-1 text-center text-yellow-600 font-bold
+  @apply text-sm text-center text-slate-500 font-bold
 }
 
 .days-date {
-  @apply text-sm text-center
+  @apply text-xs text-right mr-2 mt-2
 }
 
 .badge {
