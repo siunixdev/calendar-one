@@ -1,0 +1,23 @@
+.overlay {
+  @apply h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-gray-400 bg-opacity-50
+}
+
+.modal {
+  @apply bg-white rounded-lg shadow-2xl
+}
+
+.modalHeader {
+  @apply bg-gray-100 px-4 py-2 flex justify-between items-center rounded-t-lg
+}
+
+.headerTitle {
+  @apply text-gray-400
+}
+
+.formInput {
+  @apply pt-3 border-0 text-gray-600 pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500
+}
+
+.modalFooter {
+  @apply flex justify-end border-t p-3 mt-5
+}

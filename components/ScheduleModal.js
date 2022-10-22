@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import AppContext from '../AppContext';
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import dayjs from 'dayjs';
+import styles from '../styles/Modal.module.css'
 
 function ScheduleModal() {
   const { setShowModal, dateSelected, setDateSelected, schedule } = useContext(AppContext);
@@ -17,10 +18,10 @@ function ScheduleModal() {
   }
 
   return (
-    <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-gray-400 bg-opacity-50">
-      <form className="bg-white rounded-lg shadow-2xl w-1/4">
-        <header className="bg-gray-100 px-4 py-2 flex justify-between items-center">
-          <span className="text-gray-400">
+    <div className={styles.overlay}>
+      <form className={styles.modal}>
+        <header className={styles.modalHeader}>
+          <span className={styles.headerTitle}>
             Schedule {title ? ': ' + title : ''}
           </span>
           <div>
@@ -33,14 +34,13 @@ function ScheduleModal() {
           </div>
         </header>
         <div className="p-3">
-          <div className="grid grid-cols-1/5 items-end gap-y-7">
-            <div></div>
+          <div className="grid items-end gap-y-7">
             <input
               type="text"
               name="title"
               placeholder="Add title"
               required
-              className="pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
+              className={`text-xl font-semibold ${styles.formInput}`}
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
@@ -50,13 +50,13 @@ function ScheduleModal() {
               name="description"
               placeholder="Add a description"
               required
-              className="pt-3 border-0 text-gray-600 pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
+              className={styles.formInput}
               value={description}
               onChange={e => setDescription(e.target.value)}
             />
           </div>
         </div>
-        <footer className="flex justify-end border-t p-3 mt-5">
+        <footer className={styles.modalFooter}>
           <button
             className="button-primary"
             onClick={handleSubmit}

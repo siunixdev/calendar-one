@@ -13,8 +13,6 @@ function Day({ day, rowIindex, title, schedule }) {
     return title === "" ? '' : 'bg-red-100 text-red-600 text-center'
   }
 
-  console.log(schedule);
-
   return (
     <div className={`days ${getTodayClass()} ${getHolidayClass()}`} onDoubleClick={() => {
       setDateSelected(day)
