@@ -36,7 +36,7 @@ function ScheduleModal() {
   }
 
   function handleRemove() {
-    if(confirm("Are you sure want to delete this schedule ?")) {
+    if (confirm("Are you sure want to delete this schedule ?")) {
       if (Object.entries(selectedSchedule).length !== 0) {
         const schedulesIndex = schedule.findIndex(s => s.id === selectedSchedule.id)
         schedule.splice(schedulesIndex, 1)
@@ -100,9 +100,13 @@ function ScheduleModal() {
           </div>
         </div>
         <footer className={styles.modalFooter}>
-          <button onClick={handleRemove} className="button-danger">
-            Delete
-          </button>
+          <div>
+            {Object.entries(selectedSchedule).length !== 0 && (
+              <button onClick={handleRemove} className="button-danger">
+                Delete
+              </button>
+            )}
+          </div>
           <button
             className="button-primary"
             onClick={handleSubmit}
