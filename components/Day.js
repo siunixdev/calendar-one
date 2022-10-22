@@ -15,8 +15,7 @@ function Day({ day, rowIindex, title}) {
   }
 
   function scheduleRemove(index) {
-    confirm("Are you sure want to remove this schedule ?")
-    if(confirm) {
+    if(confirm("Are you sure want to remove this schedule ?")) {
       schedule.splice(index, 1)
     }
 
