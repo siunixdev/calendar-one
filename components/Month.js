@@ -1,6 +1,10 @@
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 import Day from './Day'
 
 function Month({ month, data }) {
+  const { schedule } = useContext(AppContext);
+
   return (
     <>
       <div className='month-grid'>
@@ -14,8 +18,9 @@ function Month({ month, data }) {
               if(index !== -1) {
                 title = data[index].localName
               }
+
               return (
-                <Day day={day} key={idx} rowIindex={i} title={title} />
+                <Day day={day} key={idx} rowIindex={i} title={title} schedule={schedule} />
               )
             })
           })

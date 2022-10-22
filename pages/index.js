@@ -7,10 +7,11 @@ import styles from '../styles/Home.module.css'
 import Navigation from '../components/Navigation';
 import axios from "axios";
 import useSWR from "swr";
+import ScheduleModal from '../components/ScheduleModal';
 
 export default function Home() {
   const [currentMonth, setCurrentMonth] = useState(getMonth())
-  const { monthIndex, year } = useContext(AppContext);
+  const { monthIndex, year, showModal, setShowModal } = useContext(AppContext);
 
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex))
@@ -37,11 +38,17 @@ export default function Home() {
             <div className={styles.headerMain}>
               {/* <input type='text' name='' value='' placeholder='Search schedule...' className='p-2 rounded-lg w-full md:w-96 outline-none' /> */}
               <h1 className={styles.title}>CalendarOne</h1>
-              <button className='button-primary'>Add New Schedule</button>
+              <button className='button-primary' onClick={() => setShowModal(true)}>Add New Schedule</button>
             </div>
             <Navigation />
             <Month month={currentMonth} data={data} />
           </main >
+
+          {
+            showModal && (
+              <ScheduleModal />
+            )
+          }
         </>
       )}
     </div >

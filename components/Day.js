@@ -1,6 +1,9 @@
 import dayjs from 'dayjs'
+import { useContext } from 'react';
+import AppContext from '../AppContext';
 
-function Day({ day, rowIindex, title }) {
+function Day({ day, rowIindex, title, schedule }) {
+  const { setDateSelected, setShowModal } = useContext(AppContext);
 
   function getTodayClass() {
     return day.format('DD-MM-YY') === dayjs().format('DD-MM-YY') ? 'bg-yellow-100 text-yellow-600' : ''
@@ -11,7 +14,10 @@ function Day({ day, rowIindex, title }) {
   }
 
   return (
-    <div className={`days ${getTodayClass()} ${getHolidayClass()}`}>
+    <div className={`days ${getTodayClass()} ${getHolidayClass()}`} onDoubleClick={() => {
+      setDateSelected(day)
+      setShowModal(true)
+    }}>
       <header>
         {rowIindex === 0 && (
           <p className='days-title'>{day.format('ddd').toUpperCase()}</p>
@@ -20,6 +26,16 @@ function Day({ day, rowIindex, title }) {
       </header>
       <main className='mt-4'>
         {title}
+        {
+          schedule && schedule.map((s, i) => {
+            const schedulesIndex = schedule.findIndex(s => s.date === day.format('YYYY-MM-DD'))
+            if(schedulesIndex !== -1) {
+              return (
+                <p key={i}>{schedule[schedulesIndex].title}</p>
+              )
+            }
+          })
+        }
       </main>
     </div>
   )
