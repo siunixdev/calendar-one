@@ -1,0 +1,19 @@
+.calendar {
+  @apply min-h-screen flex flex-col p-4 bg-slate-100
+}
+
+.title {
+  @apply text-slate-600 text-lg font-bold md:text-2xl
+}
+
+.headerMain {
+  @apply flex flex-col md:flex-row justify-between items-center mb-4 gap-2
+}
+
+.headerNav {
+  @apply flex items-center p-4 rounded-t-lg gap-x-4
+}
+
+.dateNavigation {
+  @apply flex items-center justify-center gap-x-2
+}
