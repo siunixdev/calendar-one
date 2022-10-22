@@ -29,3 +29,7 @@
 .days-date {
   @apply text-sm text-center
 }
+
+.badge {
+  @apply static text-xs bg-slate-400 my-1 py-1 px-3 text-white rounded-sm
+}
