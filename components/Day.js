@@ -13,6 +13,8 @@ function Day({ day, rowIindex, title, schedule }) {
     return title === "" ? '' : 'bg-red-100 text-red-600 text-center'
   }
 
+  console.log(schedule);
+
   return (
     <div className={`days ${getTodayClass()} ${getHolidayClass()}`} onDoubleClick={() => {
       setDateSelected(day)
@@ -29,9 +31,9 @@ function Day({ day, rowIindex, title, schedule }) {
         {
           schedule && schedule.map((s, i) => {
             const schedulesIndex = schedule.findIndex(s => s.date === day.format('YYYY-MM-DD'))
-            if(schedulesIndex !== -1) {
+            if(schedulesIndex !== -1 && s.date === day.format('YYYY-MM-DD')) {
               return (
-                <p key={i}>{schedule[schedulesIndex].title}</p>
+                <p key={i}>{s.title}</p>
               )
             }
           })
