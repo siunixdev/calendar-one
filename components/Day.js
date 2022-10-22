@@ -24,14 +24,16 @@ function Day({ day, rowIindex, title, schedule }) {
         )}
         <p className='days-date'>{day.format('DD')}</p>
       </header>
-      <main className='mt-4'>
+      <main className='mt-4 relative'>
         {title}
         {
           schedule && schedule.map((s, i) => {
             const schedulesIndex = schedule.findIndex(s => s.date === day.format('YYYY-MM-DD'))
             if(schedulesIndex !== -1 && s.date === day.format('YYYY-MM-DD')) {
               return (
-                <p key={i}>{s.title}</p>
+                <div className='static text-xs bg-slate-400 my-1 py-1 px-3 text-white rounded-sm' key={i}>
+                  <p>{s.title}</p>
+                </div>
               )
             }
           })

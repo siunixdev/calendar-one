@@ -22,7 +22,7 @@ function ScheduleModal() {
       <form className={styles.modal}>
         <header className={styles.modalHeader}>
           <span className={styles.headerTitle}>
-            Schedule {title ? ': ' + title : ''}
+            Schedule
           </span>
           <div>
             <button onClick={() => {
