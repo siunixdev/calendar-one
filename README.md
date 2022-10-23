@@ -1,4 +1,13 @@
-### CalendarOne
+# CalendarOne
+Calendar UI, Intergrated with [public holiday API](https://date.nager.at/api/v3/PublicHolidays/2022/ID) and user can Add, Edit and Remove Schedule and the data will store to localstorage, To Add Data just double click on date row and User can view Schdule detail by clcik the Schedule badge
+
+## Overview
+
+![Screenshot](sc/1.png)
+
+![Screenshot](sc/2.png)
+
+![Screenshot](sc/3.png)
 
 ## TechStack
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
@@ -11,7 +20,19 @@
 
 ## Getting Started
 
-First, run the development server:
+First, Clone the project :
+
+```bash
+git clone https://github.com/siunixdev/calendar-one.git
+```
+
+go to project directory and install all dependencies with
+
+```bash
+npm install
+```
+
+and run the development server:
 
 ```bash
 npm run dev
