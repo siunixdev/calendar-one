@@ -27,26 +27,31 @@ function Navigation() {
 
   return (
     <div className={styles.headerNav}>
-      <div className={styles.dateNavigation}>
-        <button className='button-secondary' onClick={() => handleToday()}>
-          Today
-        </button>
-        <button className='button-secondary'
-          onClick={() => handlePrevMonth()}
-        >
-          <ChevronLeftIcon className='w-6' />
-        </button>
-        <button className='button-secondary'
-          onClick={() => handleNextMonth()}
-        >
-          <ChevronRightIcon className='w-6' />
-        </button>
+      <div className={styles.navigation}>
+        <div className={styles.dateNavigation}>
+          <button className='button-secondary' onClick={() => handleToday()}>
+            Today
+          </button>
+          <button className='button-secondary'
+            onClick={() => handlePrevMonth()}
+          >
+            <ChevronLeftIcon className='w-6' />
+          </button>
+          <button className='button-secondary'
+            onClick={() => handleNextMonth()}
+          >
+            <ChevronRightIcon className='w-6' />
+          </button>
+        </div>
+        <h1 className={styles.title}>
+          {
+            dayjs(new Date(dayjs().year(), monthIndex)).format('MMMM YYYY')
+          }
+        </h1>
       </div>
-      <h1 className={styles.title}>
-        {
-          dayjs(new Date(dayjs().year(), monthIndex)).format('MMMM YYYY')
-        }
-      </h1>
+      <div>
+        <p className={styles.note}>* You can add schedule by double click the date row you want</p>
+      </div>
     </div>
   )
 }

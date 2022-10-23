@@ -3,7 +3,7 @@
 }
 
 .title {
-  @apply text-slate-600 text-lg font-bold md:text-2xl
+  @apply text-slate-600 text-lg font-bold md:text-2xl mx-4 mb-4 md:mb-0
 }
 
 .headerMain {
@@ -11,9 +11,17 @@
 }
 
 .headerNav {
-  @apply flex items-center p-4 rounded-t-lg gap-x-4
+  @apply flex flex-col md:flex-row items-center justify-between p-4 rounded-t-lg gap-x-4
+}
+
+.navigation {
+  @apply flex flex-col-reverse md:flex-row items-center
 }
 
 .dateNavigation {
   @apply flex items-center justify-center gap-x-2
+}
+
+.note {
+  @apply text-slate-500 text-sm mt-4
 }
